@@ -17,7 +17,11 @@ export default class ContactsBook extends React.Component {
                   <span className="content"> {contact.name}</span>
                   Phone:
                   <span className="content"> {contact.number}</span>
-                  <button type="button" onClick={() => onDelete(contact.id)}>
+                  <button
+                    className="conformButton"
+                    type="button"
+                    onClick={() => onDelete(contact.id)}
+                  >
                     Delete
                   </button>
                 </li>

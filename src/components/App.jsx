@@ -16,12 +16,9 @@ const DATA_STATE = {
 export default class App extends React.Component {
   state = {
     ...DATA_STATE,
-    // contacts: [], // {id: 'id-1' name: 'John', number: '123'}
   };
 
   receiveFormData = data => {
-    // console.log('Showed data from App: ', data);
-
     this.setState(({ contacts }) => {
       if (contacts.find(contact => contact.name === data.name)) {
         alert(`${data.name} is already in contacts.`);
@@ -45,15 +42,12 @@ export default class App extends React.Component {
   };
 
   deleteContact = id => {
-    console.log('Received ID: ', id);
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(contact => contact.id !== id),
     }));
   };
 
   render() {
-    console.log('Control state: ', this.state); // перевірка що пише фільтр у стейт
-
     return (
       <div className="container">
         <h2>Phone Book</h2>
