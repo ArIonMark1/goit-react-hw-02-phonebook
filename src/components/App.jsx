@@ -19,13 +19,13 @@ export default class App extends React.Component {
   };
 
   receiveFormData = data => {
-    this.setState(({ contacts }) => {
-      if (contacts.find(contact => contact.name === data.name)) {
-        alert(`${data.name} is already in contacts.`);
-      } else {
-        return { contacts: [...contacts, data] };
-      }
-    });
+    const { contacts } = this.state;
+
+    if (contacts.find(contact => contact.name === data.name)) {
+      alert(`${data.name} is already in contacts.`);
+      return;
+    }
+    this.setState({ contacts: [...contacts, data] });
   };
 
   filterInputData = debounce(data => {
@@ -65,32 +65,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-/*
-  Напиши застосунок зберігання контактів телефонної книги.
-
-  Крок 1
-  Застосунок повинен складатися з форми і списку контактів. На поточному кроці реалізуй додавання імені контакту та відображення списку контактів.
-   Застосунок не повинен зберігати контакти між різними сесіями (оновлення сторінки).
-
-  Використовуйте цю розмітку інпуту з вбудованою валідацією для імені контакту.
-
-  <input
-    type="text"
-    name="name"
-    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    required
-  />
-
-  Стан, що зберігається в батьківському компоненті <App>, обов'язково повинен бути наступного вигляду, додавати нові властивості не можна.
-
-  state = {
-    contacts: [],
-    name: ''
-  }
-
-  Кожен контакт повинен бути об'єктом з властивостями name та id. Для генерації ідентифікаторів використовуй будь-який відповідний пакет, 
-  наприклад nanoid. Після завершення цього кроку, застосунок повинен виглядати приблизно так.
-
-*/

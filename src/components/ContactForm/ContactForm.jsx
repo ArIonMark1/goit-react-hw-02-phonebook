@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import './ContactForm.scss';
 
 const DATA_STATE = {
@@ -32,6 +33,12 @@ export default class ContactForm extends React.Component {
   clearState = () => {
     this.setState({ ...DATA_STATE });
   };
+  // **************************************
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+  // **************************************
+
   render() {
     return (
       <form className="contactsForm" onSubmit={this.addContact}>
